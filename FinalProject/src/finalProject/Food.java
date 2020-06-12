@@ -7,7 +7,8 @@ public class Food implements Items{
 	private HashMap<String, Float> entree_list = new HashMap<String, Float>();
 	private HashMap<String, Float> main_course_list = new HashMap<String, Float>();
 	private HashMap<String, Float> dessert_list = new HashMap<String, Float>();
-		
+	
+	// Function to add new food
 	public void addItem(String food_name,String food_type, Float food_price) {
 		if(food_type == "Entree") {
 			entree_list.put(food_name,food_price);
@@ -20,14 +21,14 @@ public class Food implements Items{
 		}
 	}
 	
-	@Override
+	@Override	// Function to remove food
 	public void removeItem(String name) {
 		if(entree_list.containsKey(name)) entree_list.remove(name);
 		else if(main_course_list.containsKey(name)) main_course_list.remove(name);
 		else if(dessert_list.containsKey(name)) dessert_list.remove(name);
 	}
 	
-	@Override
+	@Override	// Console command to display all food
 	public void displayAllItem() {
 		System.out.println("Entrees:");
 		for(String i: entree_list.keySet()) {
@@ -48,20 +49,23 @@ public class Food implements Items{
 		System.out.println();
 	}
 	
-	@Override
+	@Override	// Function to check whether a specified food already exists
 	public boolean contains(String name) {
 		if(entree_list.containsKey(name) || main_course_list.containsKey(name) || dessert_list.containsKey(name)) return true;
 		else return false;
 	}
 	
+	// Get entree
 	public HashMap<String, Float> getEntree(){
 		return entree_list;
 	}
 	
+	// Get main course
 	public HashMap<String, Float> getMainCourse(){
 		return main_course_list;
 	}
 	
+	// Get dessert
 	public HashMap<String, Float> getDessert(){
 		return dessert_list;
 	}
